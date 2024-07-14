@@ -1,0 +1,11 @@
+--- old/.config	2024-07-09 16:40:58.042152822 +0000
++++ new/.config	2024-07-09 16:43:44.172714162 +0000
+@@ -2142,7 +2142,7 @@
+ CONFIG_HID=y
+ # CONFIG_HID_BATTERY_STRENGTH is not set
+ # CONFIG_HIDRAW is not set
+-# CONFIG_UHID is not set
++CONFIG_UHID=m
+ CONFIG_HID_GENERIC=y
+
+ #
