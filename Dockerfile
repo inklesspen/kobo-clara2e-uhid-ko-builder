@@ -14,10 +14,11 @@ RUN gunzip config.gz && mv config kernel/.config
 COPY dtc-lexer.patch focaltech_flash.patch kernel-config.patch .
 
 WORKDIR /kobo/kernel
-RUN patch -p1 < /kobo/kernel-config.patch && patch -p1 < /kobo/dtc-lexer.patch && patch -p1 < /kobo/focaltech_flash.patch
+RUN patch -p1 < /kobo/dtc-lexer.patch && patch -p1 < /kobo/focaltech_flash.patch
 
 # This will error out, but it's fine.
 RUN make ARCH=arm CROSS_COMPILE=/kobo/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf- ; exit 0
+RUN patch -p1 < /kobo/kernel-config.patch
 RUN make ARCH=arm CROSS_COMPILE=/kobo/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf- modules
 
 FROM scratch AS export-stage
